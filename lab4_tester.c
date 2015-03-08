@@ -13,46 +13,82 @@ Determine if a character is alpha-numeric. (i.e. it lies between a-z, A-Z, or 0-
 􏰃Concatenate two strings.
 􏰃Remove a particular word from the string.
 */
+#include <stdio.h>
 
 /*
 Function : Test Find Length
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testFindLength();
 
 /*
 Function : Test Number Vowels
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testVowels();
 
 /*
 Function : Test Number Words
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testNumberWords();
 
 /*
 Function : Test Alpha Numeric Char
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testAlphaNumericWor();
 
 /*
 Function : Test Substring
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testSubString();
 
 /*
 Function : Test Concatenation 
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testConcat();
 
 /*
 Function : Test Remove Word
 Purpose: runs test on indicated function
+@return
+	0 - Passed All Tests
+	-1 - Return Incorrect Result
+	-2 - Did Not Return Result
+	1 - Failed to Run
 */
 int testRemove();
 
@@ -157,8 +193,25 @@ int testRemove()
 int generateReport(char* file)
 {
 	//Vars
+	FILE *outFile;
+	char *report;
+
 
 	//Generate Report Here
+	
+
+
+	//Save to specified file
+	outFile = fopen(file,"w");
+
+	if (outFile == NULL)
+	{
+		printf("There was an error saving to the file\n");
+	}
+
+	fputs(report,outFile);
+
+	fclose(outFile);
 
 	return 0;
 }
