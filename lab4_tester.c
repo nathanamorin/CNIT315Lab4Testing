@@ -215,8 +215,8 @@ int testFindLength()
 	int i, strLength, strLengthResponse = NULL, returnValue;
 	for (i=0; i<numArrays; i++)
 	{
-		strLength = strings[numArrays].length;
-		char string[strLength] = strings[numArrays].value;
+		strLength = strings[i].length;
+		char string[i] = strings[numArrays].value;
 
 		//Use Function to find length of string
 		//returnValue = findLength(&strLengthResponse)
@@ -233,8 +233,6 @@ int testFindLength()
 		{
 			return -1;
 		}
-		
-		return 0;
 
 	}
 
@@ -246,8 +244,39 @@ int testFindLength()
 int testVowels()
 {
 	//Vars
+	int i,e,numVowels, strLength, strVowelResponse = NULL, returnValue;
+	for (e=0; e<numArrays; e++)
+	{
+		strLength = strings[e].length;
+		char string[e] = strings[numArrays].value;
 
-	//Implement Tests Here
+		//Find number of vowels
+		//Source -- http://www.programiz.com/c-programming/examples/vowel-consonant-frequency-string
+		for(i=0;string[i]!='\0';++i) 
+		{ 
+			if(line[i]=='a' || line[i]=='e' || line[i]=='i' || 
+			line[i]=='o' || line[i]=='u' || line[i]=='A' || 
+			line[i]=='E' || line[i]=='I' || line[i]=='O' || 
+			line[i]=='U') numVowels++;
+		}
+		//Use Function to find length of string
+		//returnValue = findLength(&strVowelResponse)
+
+		if (returnValue != 0)
+		{
+			return 1;
+		}
+		if (strVowelResponse == NULL)
+		{
+			return -2;
+		}
+		if (strVowelResponse != numVowels)
+		{
+			return -1;
+		}
+
+	}
+
 
 	return 0;
 }
@@ -256,8 +285,43 @@ int testVowels()
 int testNumberWords()
 {
 	//Vars
+	int i,e,numWords = 0, strLength, strWordResponse = NULL, returnValue;
+	for (e=0; e<numArrays; e++)
+	{
+		strLength = strings[e].length;
+		char string[e] = strings[numArrays].value;
 
-	//Implement Tests Here
+		//Find number of Words
+		for(i=0;string[i]!='\0';++i) 
+		{ 
+			if(line[i]==' ' && i < strLength -1) 
+			{
+				numWords++;
+			}
+		}
+		if (numWords > 0)
+		{
+			numWords++;
+		}
+
+		//Use Function to find length of string
+		//returnValue = findLength(&strWordResponse)
+
+		if (returnValue != 0)
+		{
+			return 1;
+		}
+		if (strWordResponse == NULL)
+		{
+			return -2;
+		}
+		if (strWordResponse != numWords)
+		{
+			return -1;
+		}
+
+	}
+
 
 	return 0;
 }
