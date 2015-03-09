@@ -168,12 +168,18 @@ struct RandomString strings[5];
 
 
 
-int main()
+int main(int argc, char *argv[])
 {
-	//Vars
-	char *file;
+	//Check to make sure arugment was included for filename
+	if (argc != 2)
+	{
+		printf("usage : %s filename\n", argv[0]);
+		return 1;
+	}
 
-	//Create some random arrays
+
+
+	//Create some random char arrays and put inside strings array
 	int i, currentArrayLength = 10;
 	for (i = 0; i < numArrays; i++)
 	{
@@ -188,18 +194,9 @@ int main()
 		currentArrayLength *= 5;
 	}
 
+	//Generate Report and put in file specified in arugments
+	generateReport(argv[1]);
 
-
-	
-	//Get File from input
-
-	//Generate Report
-	//generateReport(file);
-	testFindLength();
-
-
-
-	
 
 	return 0;
 }
@@ -216,7 +213,8 @@ int testFindLength()
 	for (i=0; i<numArrays; i++)
 	{
 		strLength = strings[i].length;
-		char string[i] = strings[numArrays].value;
+		char *string = malloc(strLength);
+		string = strings[numArrays].value;
 
 		//Use Function to find length of string
 		//returnValue = findLength(&strLengthResponse)
@@ -248,16 +246,17 @@ int testVowels()
 	for (e=0; e<numArrays; e++)
 	{
 		strLength = strings[e].length;
-		char string[e] = strings[numArrays].value;
+		char *string = malloc(strLength);
+		string = strings[numArrays].value;
 
 		//Find number of vowels
 		//Source -- http://www.programiz.com/c-programming/examples/vowel-consonant-frequency-string
 		for(i=0;string[i]!='\0';++i) 
 		{ 
-			if(line[i]=='a' || line[i]=='e' || line[i]=='i' || 
-			line[i]=='o' || line[i]=='u' || line[i]=='A' || 
-			line[i]=='E' || line[i]=='I' || line[i]=='O' || 
-			line[i]=='U') numVowels++;
+			if(string[i]=='a' || string[i]=='e' || string[i]=='i' || 
+			string[i]=='o' || string[i]=='u' || string[i]=='A' || 
+			string[i]=='E' || string[i]=='I' || string[i]=='O' || 
+			string[i]=='U') numVowels++;
 		}
 		//Use Function to find length of string
 		//returnValue = findLength(&strVowelResponse)
@@ -289,12 +288,13 @@ int testNumberWords()
 	for (e=0; e<numArrays; e++)
 	{
 		strLength = strings[e].length;
-		char string[e] = strings[numArrays].value;
+		char *string = malloc(strLength);
+		string = strings[numArrays].value;
 
 		//Find number of Words
 		for(i=0;string[i]!='\0';++i) 
 		{ 
-			if(line[i]==' ' && i < strLength -1) 
+			if(string[i]==' ' && i < strLength -1) 
 			{
 				numWords++;
 			}
@@ -381,9 +381,10 @@ int generateReport(char* file)
 	//Save to specified file
 	outFile = fopen(file,"w");
 
-	if (outFile == NULL)
+	if (outFile == 0)
 	{
 		printf("There was an error saving to the file\n");
+		return 1;
 	}
 
 	fputs(report,outFile);
