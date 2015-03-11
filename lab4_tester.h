@@ -36,6 +36,8 @@ int testFindLength();
 /*
 Function : Test Number Vowels
 Purpose: runs test on indicated function
+input should be char array, pointer of lengthvariable
+not testing for nulls
 @return
 0 - Passed All Tests
 -1 - Return Incorrect Result
@@ -47,6 +49,10 @@ int testVowels();
 /*
 Function : Test Number Words
 Purpose: runs test on indicated function
+input should be char array
+input should be pointer of numberofvowelsvariable
+return should be 0 if successful and 1 if not
+input char
 @return
 0 - Passed All Tests
 -1 - Return Incorrect Result
@@ -58,6 +64,9 @@ int testNumberWords();
 /*
 Function : Test Alpha Numeric Word
 Purpose: runs test on indicated function
+input should be char array
+input should be pointer of numberofwordsvariabe
+return should be 0 if successful and 1 if not
 @return
 0 - Passed All Tests
 -1 - Return Incorrect Result
@@ -70,16 +79,16 @@ int testAlphaNumericWord();
 Function : Test Substring
 Purpose: runs test on indicated function
 @return
-0 - Passed All Tests
--1 - Return Incorrect Result
--2 - Did Not Return Result
-1 - Failed to Run
+input value, char
+return 0 for alphaneurmeric or 1 if other type
+
 */
 int testSubString();
 
 /*
 Function : Test Concatenation 
 Purpose: runs test on indicated function
+input char array, char array, int index1, int index2
 @return
 0 - Passed All Tests
 -1 - Return Incorrect Result
@@ -91,6 +100,7 @@ int testConcat();
 /*
 Function : Test Remove Word
 Purpose: runs test on indicated function
+input char array, char array, int length, int length2
 @return
 0 - Passed All Tests
 -1 - Return Incorrect Result
@@ -103,6 +113,9 @@ int testRemove();
 Function : generate report
 Purpose: using testing functions, generate report and push out to .txt file
 			specified in main input.
+input char array(totalstring), char array(word to remove)
+return 0 for success
+return 1 for fail
 */
 int generateReport(char* file);
 
