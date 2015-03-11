@@ -396,10 +396,17 @@ int testConcat()
 int testRemove()
 {
 	//Vars
-
-	//Implement Tests Here
-
-	return 0;
+	char* chararray  = "mother hubbard";
+	char* removeword = "hubbard";
+	removefunction(chararray, removeword);
+	if(chararray == "mother")
+	{
+		return 0;
+	}
+	if(chararray != "mother")
+	{
+		return 1;
+	}
 }
 
 
