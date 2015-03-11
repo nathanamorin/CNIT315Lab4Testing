@@ -317,71 +317,57 @@ int generateReport(char* file)
 	};
 
 
-	#define add(line) addStrings(&report, line)
+	#define add(line) addStrings(report, line)
 
 
 
 	//Generate Report Here
-	add("\n\nGenerall Tests ...\n");
-	add("-----------------------------------------------------------------\n");
-	for (i=0; i< numFunctions; i++)
+	for (i=0; i< 10; i++)
 	{
-		functionResponse = functions[i].function();
+		//functionResponse = functions[i].function();
 		//printf("Index %d Function %s returned %d\n",i, functions[i].name, functionResponse);
-		add(functions[i].name);
+		//add(functions[i].name);
 		//add(" function failed to run.\n");
-		
-	
+		add("test");
+		// switch (functionResponse)
+		// {
+		// case 0:
+		// 	add(" function has passed all tests.\n");
+		// 	break;
+		// case 1:
+		// 	printf("TEST1\n");
+		// 	add(" function failed to run.\n");
+		// 	break;
+		// case -1:
+		// 	add(" function did not return the correct result\n");
+		// 	break;
+		// case -2:
+		// 	add(" function did not return result\n");
+		// 	break;
+		// }
 
-		switch (functionResponse)
-		{
-		case 0:
-			add(" function ---  passed all tests.\n\n");
-			break;
-		case 1:
-			add(" function ---- failed to run.\n\n");
-			break;
-		case -1:
-			add(" function ---- did not return the correct result\n\n");
-			break;
-		case -2:
-			add(" function ---- did not return result\n\n");
-			break;
-		}
-
-
+		//printf("REPORT -- %s\n\n\n", report);
 	}
 
-	add("\n\nExtra Targeted Testing ...\n");
-	add("-----------------------------------------------------------------\n");
-	add("ALL PASS");
 
-
-
-
-
-
-	printf("-----------------------------------------------------------------\n");
-	printf("REPORT HAS BEEN SAVED in file '%s' \n",file);
-	printf("See Below For Report \n\n");
-	printf("%s", report);
+	printf("%s\n", report);
 
 
 	
 
 
-	//Save to specified file
-	outFile = fopen(file,"w");
+	// //Save to specified file
+	// outFile = fopen(file,"w");
 
-	if (outFile == 0)
-	{
-		printf("There was an error saving to the file\n");
-		return 1;
-	}
+	// if (outFile == 0)
+	// {
+	// 	printf("There was an error saving to the file\n");
+	// 	return 1;
+	// }
 
-	fputs(report,outFile);
+	// fputs(report,outFile);
 
-	fclose(outFile);
+	// fclose(outFile);
 
 	return 0;
 }
@@ -436,24 +422,24 @@ int generate_random_string_array(char* array, int array_length){
 	return 0;
 }
 
-int addStrings(char **array_main, char *array_add)
+int addStrings(char *array_main, char *array_add)
 {
 	
-	int length_main = strlen(*array_main);
+	int length_main = strlen(array_main)+1;
 	int length_add = strlen(array_add)+1;
 	//Expand Array
-	*array_main = realloc(*array_main,length_main+length_add);	
+	char *arrayBuffer = realloc(array_main,length_main+length_add);	
 	//Check if expansion was successful
-
-	deep_copy_string(array_add, *array_main + length_main*sizeof(char), length_add);
-	//int i;
-	// for (i=length_main; i<length_main+length_add; i++)
-	// {
-	// 	*array_main[i] = array_add[i-length_main];
-	// }
-	// //free(array_buffer);
-
+	if (arrayBuffer == NULL)
+	{
+		printf("ERROR : There was an error processing \
+			your request (addItemHandler arrayBuffer NULL)\n");
+		return 1;
+	}
 	
+	deep_copy_string(array_add, arrayBuffer + length_main*sizeof(char), length_add);
+	
+	array_main = arrayBuffer;
 	return 0;
 }
 

@@ -73,7 +73,7 @@ return should be 0 if successful and 1 if not
 -2 - Did Not Return Result
 1 - Failed to Run
 */
-int testAlphaNumericWord();
+int testAlphaNumericChar();
 
 /*
 Function : Test Substring
@@ -167,4 +167,6 @@ void deep_copy_string(char* array_from, char* array_to, int array_length);
 
 int generate_random_string(char* array, int array_length);
 
-int addStrings(char *array_main, char *array_add);
+int addStrings(char **array_main, char *array_add);
+
+int loadArrays();
