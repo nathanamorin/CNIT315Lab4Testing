@@ -398,7 +398,7 @@ int testRemove()
 	//Vars
 	char* chararray  = "mother hubbard";
 	char* removeword = "hubbard";
-	removefunction(chararray, removeword);
+	wordRemove(chararray, removeword);
 	if(chararray == "mother")
 	{
 		return 0;
