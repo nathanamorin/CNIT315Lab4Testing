@@ -209,12 +209,43 @@ int testNumberWords()
 int testAlphaNumericWord()
 {
 	//Vars
-
-	//Implement Tests Here
-	
-	
-
+	int value;
+	int first;
+	int second;
+	int third;
+	value = alphaNumeric("n");
+	if(value==0)
+	{
+		first = 0;	
+	}
+	if(value== 1)
+	{
+		first = 1;
+	}
+	value = alphaNumeric("9");
+	if(value==0)
+	{
+		second = 0;	
+	}
+	if(value== 1)
+	{
+		second = 1;
+	}
+	value = alphaNumeric("!");
+	if(value==0)
+	{
+		third = 0;	
+	}
+	if(value== 1)
+	{
+		third = 1;
+	}
+	if(third == 1 && second == 0 && first == 0)
+	{
 	return 0;
+	}
+	else
+	return 1;
 }
 
 
@@ -270,7 +301,7 @@ int testRemove()
 	char* chararray  = "mother hubbard";
 	char* removeword = "hubbard";
 	wordRemove(chararray, removeword);
-	if(chararray == "mother")
+	if(chararray == "mother ")
 	{
 		return 0;
 	}
