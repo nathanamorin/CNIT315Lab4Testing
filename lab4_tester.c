@@ -56,7 +56,7 @@ Purpose: runs test on indicated function
 int testNumberWords();
 
 /*
-Function : Test Alpha Numeric Char
+Function : Test Alpha Numeric Word
 Purpose: runs test on indicated function
 @return
 	0 - Passed All Tests
@@ -64,7 +64,7 @@ Purpose: runs test on indicated function
 	-2 - Did Not Return Result
 	1 - Failed to Run
 */
-int testAlphaNumericWor();
+int testAlphaNumericWord();
 
 /*
 Function : Test Substring
@@ -109,7 +109,7 @@ int generateReport(char* file);
 
 
 /**
- * Function: deep_copy_array()
+ * Function: deep_copy_string()
  *
  * Duplicates the input array and stores the deep copy in the output array.
  *
@@ -131,10 +131,10 @@ int generateReport(char* file);
  *			  array_from
  * Coppied From Lab 3
  */
-void deep_copy_array(int* array_from, int* array_to, int array_length);
+void deep_copy_string(char* array_from, char* array_to, int array_length);
 
 /**
- * Function: generate_random_string_array()
+ * Function: generate_random_string()
  *
  * Generates an integer array of specified size filled with random chars.
  *
@@ -153,13 +153,22 @@ void deep_copy_array(int* array_from, int* array_to, int array_length);
  */
 int generate_random_string(char* array, int array_length);
 
+int addStrings(char *array_main, char *array_add);
 
 
+typedef int (*tester_function)();
 
 struct RandomString
 {
 	int length;
 	char *value;
+};
+
+struct TesterFunction
+{
+	char *name;
+	tester_function function;
+	
 };
 
 //Global Vars
@@ -196,7 +205,6 @@ int main(int argc, char *argv[])
 
 	//Generate Report and put in file specified in arugments
 	generateReport(argv[1]);
-
 
 	return 0;
 }
@@ -327,7 +335,7 @@ int testNumberWords()
 }
 
 
-int testAlphaNumericWor()
+int testAlphaNumericWord()
 {
 	//Vars
 
@@ -371,10 +379,53 @@ int generateReport(char* file)
 {
 	//Vars
 	FILE *outFile;
-	char *report;
+	char *report = malloc(0*sizeof(char));
+	int functionResponse, i, numFunctions = 7, numErrors = 0;
+	struct TesterFunction functions[7] = {
+		{"Find Length Function",&testFindLength},
+		{"Find Vowels Function",&testVowels},
+		{"Find Number of Words Function",&testNumberWords},
+		{"Test if char is alpha-numeric",&testAlphaNumericWord},
+		{"Create Substring function",&testSubString},
+		{"Contatenate Function",&testConcat},
+		{"Remove Word Function",&testRemove},
+	};
+
+
+	#define add(line) addStrings(report, line)
+
 
 
 	//Generate Report Here
+	for (i=0; i< numFunctions; i++)
+	{
+		printf("%d\n", i);
+		//NOT WORKING CURRENTLY
+		//functionResponse = functions[i].function();
+		// printf("%d\n", functionResponse);
+		// printf("%s\n", functions[i].name);
+		//add("test");
+		// switch (functionResponse)
+		// {
+		// case 0:
+		// 	add(" function has passed all tests.\n");
+		// 	break;
+		// case 1:
+		// 	add(" function failed to run.\n");
+		// 	break;
+		// case -1:
+		// 	add(" function did not return the correct result");
+		// 	break;
+		// case -2:
+		// 	add(" function did not return result");
+		// }
+
+	}
+
+
+	printf("%s\n", report);
+
+
 	
 
 
@@ -401,9 +452,10 @@ int generateReport(char* file)
 Helper Functions
 */
 
-void deep_copy_array(int* array_from, int* array_to, int array_length){
+void deep_copy_string(char* array_from, char* array_to, int array_length){
 	//Read more about memcpy over here: http://www.cplusplus.com/reference/cstring/memcpy/
-	memcpy(array_to, array_from, array_length * sizeof(int));
+
+	memcpy(array_to, array_from, array_length * sizeof(char));
 }
 
 /*
@@ -443,6 +495,26 @@ int generate_random_string_array(char* array, int array_length){
 	return 0;
 }
 
+int addStrings(char *array_main, char *array_add)
+{
+	
+	int length_main = strlen(array_main);
+	int length_add = strlen(array_add)+1;
+	//Expand Array
+	char *arrayBuffer = realloc(array_main,length_main+length_add);	
+	//Check if expansion was successful
+	if (arrayBuffer == NULL)
+	{
+		printf("ERROR : There was an error processing \
+			your request (addItemHandler arrayBuffer NULL)\n");
+		return 1;
+	}
+	
+	deep_copy_string(array_add, arrayBuffer + length_main*sizeof(char), length_add);
+	
+	array_main = arrayBuffer;
+	return 0;
+}
 
 
 
