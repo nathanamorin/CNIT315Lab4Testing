@@ -160,7 +160,7 @@ int testVowels()
 int testNumberWords()
 {
 	//Vars
-	int i,e,numWords = 0, strLength, strWordResponse = NULL, returnValue;
+	int i,e,numWords = 1, strLength, strWordResponse = NULL, returnValue;
 	for (e=0; e<numArrays; e++)
 	{
 		strLength = strings[e].length;
@@ -168,9 +168,12 @@ int testNumberWords()
 		string = strings[numArrays].value;
 
 		//Find number of Words
-		for(i=0;string[i]!='\0';++i) 
+		for(i=1;string[i]!='\0';++i) 
 		{ 
-			if(string[i]==' ' && i < strLength -1) 
+			if((string[i]==' ' && string[i-1]!=' ' || 
+				string[i]=='\t' && string[i-1]!='\t' ||
+				string[i]=='_' && string[i-1]!= '_') && 
+				i < strLength -1) 
 			{
 				numWords++;
 			}
