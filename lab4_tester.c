@@ -237,7 +237,7 @@ int testAlphaNumericWord()
 	{
 		third = 1;
 	}
-	if(third == 0 && second == 0 && first == 0)
+	if(third == 1 && second == 0 && first == 0)
 	{
 	return 0;
 	}
