@@ -340,6 +340,8 @@ int testAlphaNumericWord()
 	//Vars
 
 	//Implement Tests Here
+	
+	
 
 	return 0;
 }
@@ -347,9 +349,35 @@ int testAlphaNumericWord()
 
 int testSubString()
 {
-	//Vars
+	//vars
+	int index1, index2, subStringLength;
+	char subString[];
+	if (index1 == 0)
+	{
+		char[index2-index1] subString;
+		subStringLength = index2 - index1;
+	}
+	if (index1 > 0)
+	{
+		char[index2-index1-0] subString;
+		subStringLength = index2 - index1 + 1; 
+	}
+	// Implement tests
+	if (index1 < 0 || index2 <0)
+	{
+		return -1;
+	}
+	
+	if (subStringLength == NULL)
+	{
+		return -2;
+	}
 
-	//Implement Tests Here
+	if (subString[] == NULL)
+	{
+		return -2;
+		
+	}      
 
 	return 0;
 }
