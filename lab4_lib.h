@@ -32,7 +32,7 @@ int substring(char* array1, char* array2, int index1, int index2);
   the function does not require any input.
 */
 
-int concatenateStrings(char*, char*, int length1, int length2);
+int concatenateStrings(char*, char*);
 /*
   This function combines two character arrays together
   the function requires two char arrays that already have characters in them
