@@ -62,6 +62,3 @@ int alphaNumeric(char ch);
 */
 
 #endif
-  the function does not require any input.
-*/
-#endif
