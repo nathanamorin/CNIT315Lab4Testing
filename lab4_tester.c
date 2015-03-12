@@ -276,11 +276,42 @@ int testSubString()
 int testConcat()
 {
 	//Vars
+	int e, strLength, returnValue;
+	int length1, length2, totalLength;
+	for (e=0; e<numArrays; e++)
+	{
+		strLength = strings[e].length;
+		char string1[strLength] = ' ';
+		char string2[strLength] = ' ';
+		deep_copy_string(char* strings[numArrays].value, char* string1, int strLength);
+		deep_copy_string(char* strings[numArrays].value, char* string2, int strLength);
+		
+    length1 = sizeof(string1) / sizeof(string1[0]);
+    length2 = sizeof(string2) / sizeof(string2[0]);
+    totalLength = length1 + length2;				
 
-	//Implement Tests Here
+		//Use Function to concatinate two strings
+		
+		//returnValue = findConcat(&string1, &string2, length1, length2);
+
+		if (returnValue != 0)
+		{
+			return 1;
+		}
+		else if (string1[0] == ' ' || string2[0] == ' ')
+		{
+			return -2;
+		}
+		else if (totalLength != (length1 + length2))
+		{
+			return -1;
+		}
+
+	}
 
 	return 0;
 }
+
 
 
 int testRemove()
