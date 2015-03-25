@@ -259,18 +259,20 @@ int concatenateStrings(char* str1, char* str2)
     int printStringWLen(char* array, int* length)
   {
 
-  printf("Please type a string\n\n");
-  scanf("%50s", array);
-  if (array = "\0")
+  if (array == "\0")
   {
     printf("Error -- array is null");
    return 1; 
   }
   
-  while(array[*length] != '\0')
-   {
-    *length++;
-   }
+  int number = 0;
+  while (array[a] != '\0')
+  {
+    number++;
+  }
+  
+  *length = number;
+  
   printf("You Entered:%s\n", array);
   printf("The Length of the string is: %d\n",*length);
   return 0;
