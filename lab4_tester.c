@@ -240,35 +240,19 @@ int testAlphaNumericChar()
 int testSubString()
 {
 	//vars
-	int index1, index2, subStringLength;
-	char *subString;
-	if (index1 == 0)
-	{
-		char subString[index2-index1];
-		subStringLength = index2 - index1;
-	}
-	if (index1 > 0)
-	{
-		char subString[index2-index1-0];
-		subStringLength = index2 - index1 + 1; 
-	}
-	// Implement tests
-	if (index1 < 0 || index2 <0)
+	char *string;
+	char *string = "lucille";
+	subString(string, 2, 5);
+	
+	if (string != "cill")
 	{
 		return -1;
 	}
 	
-	if (subStringLength == NULL)
+	if (string == NULL)
 	{
 		return -2;
 	}
-
-	if (subString == NULL)
-	{
-		return -2;
-		
-	}      
-
 	return 0;
 }
 
