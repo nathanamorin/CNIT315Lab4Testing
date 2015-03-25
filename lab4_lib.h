@@ -19,7 +19,7 @@ int wordRemove(char* sentence_array, char* word);
   maxSize needs to be the maximum size of the character array entered
 */
 
-int vowelCheck(char* array);
+int vowelCheck(char* array, int* vowels);
 /*
   This function counts the number of vowels in a char array
   the function does not require any input
