@@ -25,7 +25,7 @@ int vowelCheck(char* array);
   the function does not require any input
 */
 
-int substring(char* array1, char* array2, int index1, int index2);
+int subString(char* array1, int index1, int index2);
 /*
   This function prints the characters in a substring
   The char array is made inside of the function
