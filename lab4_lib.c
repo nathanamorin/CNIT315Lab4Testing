@@ -179,30 +179,31 @@ int vowelCheck(char* array, int* vowels)
 
 // This is the start of the substring portion of the lab
 // Code written by Ben Hail
-int subString(char *array1, char *array2, int index1, int index2)
+int subString (char *array1, int index1, int index2)
 		{
 				
 			int position;
+			int i = 0;
+			char input2[100];
+	
+			
 
 		if (array1 == NULL)
 				{
 					return 1;
 				}
-    if (array2 == NULL)
-				{
-					return 1;
-				}
-		if (index1 > index2)
-		    {
-		      return 1;
-		    }
+
 			for (position = index1; position <= index2; position++)
         {
             printf("%c", array1[position]);
-						*array2 = array1[position];
-
+						
+						input2[i] = array1[position];
+						i++;
+						
 
         }
+				
+					array1 = input2;
          printf("\n");
 					return 0;
 		}
@@ -259,18 +260,20 @@ int concatenateStrings(char* str1, char* str2)
     int printStringWLen(char* array, int* length)
   {
 
-  printf("Please type a string\n\n");
-  scanf("%50s", array);
-  if (array = "\0")
+  if (array == "\0")
   {
     printf("Error -- array is null");
    return 1; 
   }
   
-  while(array[*length] != '\0')
-   {
-    *length++;
-   }
+  int number = 0;
+  while (array[number] != '\0')
+  {
+    number++;
+  }
+  
+  *length = number;
+  
   printf("You Entered:%s\n", array);
   printf("The Length of the string is: %d\n",*length);
   return 0;
