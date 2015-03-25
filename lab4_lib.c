@@ -266,7 +266,7 @@ int concatenateStrings(char* str1, char* str2)
   }
   
   int number = 0;
-  while (array[a] != '\0')
+  while (array[number] != '\0')
   {
     number++;
   }
