@@ -21,6 +21,7 @@ Some functions copied from lab 03
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lab4_lib.h"
 
 /*
 Function : Test Find Length

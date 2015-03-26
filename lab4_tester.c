@@ -18,10 +18,8 @@ Collaborators:
 
 	Some functions copied from lab 03
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "lab4_tester.h"
+
 
 
 typedef int (*tester_function)();
@@ -72,7 +70,7 @@ int main(int argc, char *argv[])
 int testFindLength()
 {
 	//Vars
-	int i, strLength, strLengthResponse = NULL, returnValue;
+	int i, strLength, strLengthResponse = -5, returnValue;
 	for (i=0; i<numArrays; i++)
 	{
 		strLength = strings[i].length;
@@ -86,7 +84,7 @@ int testFindLength()
 		{
 			return 1;
 		}
-		if (strLengthResponse == NULL)
+		if (strLengthResponse == -5)
 		{
 			return -2;
 		}
@@ -105,7 +103,7 @@ int testFindLength()
 int testVowels()
 {
 	//Vars
-	int i,e,numVowels, strLength, strVowelResponse = NULL, returnValue;
+	int i,e,numVowels, strLength, strVowelResponse = -5, returnValue;
 	for (e=0; e<numArrays; e++)
 	{
 		loadArrays();
@@ -127,7 +125,7 @@ int testVowels()
 		{
 			return 1;
 		}
-		if (strVowelResponse == NULL)
+		if (strVowelResponse == -5)
 		{
 			return -2;
 		}
@@ -147,7 +145,7 @@ int testVowels()
 int testNumberWords()
 {
 	//Vars
-	int i,e,numWords = 1, strLength, strWordResponse = NULL, returnValue;
+	int i,e,numWords = 1, strLength, strWordResponse = -5, returnValue;
 	for (e=0; e<numArrays; e++)
 	{
 		loadArrays();
@@ -178,7 +176,7 @@ int testNumberWords()
 		{
 			return 1;
 		}
-		if (strWordResponse == NULL)
+		if (strWordResponse == -5)
 		{
 			return -2;
 		}
@@ -240,8 +238,7 @@ int testAlphaNumericChar()
 int testSubString()
 {
 	//vars
-	char *string;
-	char *string = "lucille";
+	char string[] = "lucille";
 	subString(string, 2, 5);
 	
 	if (string != "cill")
@@ -265,10 +262,9 @@ int testConcat()
 	for (e=0; e<numArrays; e++)
 	{
 		strLength = strings[e].length;
-		char string1[strLength] = ' ';
-		char string2[strLength] = ' ';
-		deep_copy_string(char* strings[numArrays].value, char* string1, int strLength);
-		deep_copy_string(char* strings[numArrays].value, char* string2, int strLength);
+		char string1[strLength], string2[strLength];
+		deep_copy_string(strings[numArrays].value, string1, strLength);
+		deep_copy_string(strings[numArrays].value, string2, strLength);
 		
     length1 = sizeof(string1) / sizeof(string1[0]);
     length2 = sizeof(string2) / sizeof(string2[0]);
@@ -304,6 +300,7 @@ int testRemove()
 	char* chararray  = "mother hubbard";
 	char* removeword = "hubbard";
 	//wordRemove(chararray, removeword);
+
 	if(chararray == "mother ")
 	{
 		return 0;
