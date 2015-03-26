@@ -55,6 +55,12 @@ int main(int argc, char *argv[])
 
 
 	loadArrays();
+	printf("Starting Test\n");
+	// int i;
+	// for (i=0;i<5;i++)
+	// {
+	// 	printf("%s\n", strings[i].value);
+	// }
 
 	//Generate Report and put in file specified in arugments
 	generateReport(argv[1]);
@@ -75,10 +81,18 @@ int testFindLength()
 	{
 		strLength = strings[i].length;
 		char *string = malloc(strLength);
-		string = strings[numArrays].value;
+		string = strings[i].value;
+		//printf("%s\n", strings[0].value);
+		// int i =0;
+		// while (string[i] != '\0')
+		// {
+		// 	printf("%d\n",i);
+		// 	i++;
+		// }
+		// printf("Ending my test\n");
 
 		//Use Function to find length of string
-		//returnValue = findLength(&strLengthResponse)
+		returnValue = printStringWLen(string, &strLengthResponse);
 
 		if (returnValue != 0)
 		{
@@ -120,7 +134,7 @@ int testVowels()
 			string[i]=='U') numVowels++;
 		}
 		//Use Function to find length of string
-		//returnValue = findLength(&strVowelResponse)
+		returnValue = vowelCheck(string, &strVowelResponse);
 		if (returnValue != 0)
 		{
 			return 1;
@@ -170,7 +184,7 @@ int testNumberWords()
 		}
 
 		//Use Function to find length of string
-		//returnValue = findLength(&strWordResponse)
+		returnValue = wordCount(string, &strWordResponse);
 
 		if (returnValue != 0)
 		{
@@ -199,7 +213,8 @@ int testAlphaNumericChar()
 	int first;
 	int second;
 	int third;
-	//value = alphaNumeric("n");
+	//NOTE: must use single quote for char
+	value = alphaNumeric('n');
 	if(value==0)
 	{
 		first = 0;	
@@ -208,7 +223,7 @@ int testAlphaNumericChar()
 	{
 		first = 1;
 	}
-	//value = alphaNumeric("9");
+	value = alphaNumeric('9');
 	if(value==0)
 	{
 		second = 0;	
@@ -217,7 +232,7 @@ int testAlphaNumericChar()
 	{
 		second = 1;
 	}
-	//value = alphaNumeric("!");
+	value = alphaNumeric('!');
 	if(value==0)
 	{
 		third = 0;	
@@ -226,7 +241,7 @@ int testAlphaNumericChar()
 	{
 		third = 1;
 	}
-	if(third == 1 && second == 0 && first == 0)
+	if(third == 0 && second == 0 && first == 0)
 	{
 	return 0;
 	}
@@ -241,7 +256,9 @@ int testSubString()
 	char string[] = "lucille";
 	subString(string, 2, 5);
 	
-	if (string != "cill")
+	// use strcmp(check,input) != 0 
+	//source :: http://stackoverflow.com/questions/8004237/how-do-i-properly-compare-strings-in-c
+	if (strcmp(string, "cill") == 0)
 	{
 		return -1;
 	}
@@ -263,8 +280,8 @@ int testConcat()
 	{
 		strLength = strings[e].length;
 		char string1[strLength], string2[strLength];
-		deep_copy_string(strings[numArrays].value, string1, strLength);
-		deep_copy_string(strings[numArrays].value, string2, strLength);
+		deep_copy_string(strings[e].value, string1, strLength);
+		deep_copy_string(strings[e].value, string2, strLength);
 		
     length1 = sizeof(string1) / sizeof(string1[0]);
     length2 = sizeof(string2) / sizeof(string2[0]);
@@ -297,18 +314,22 @@ int testConcat()
 int testRemove()
 {
 	//Vars
-	char* chararray  = "mother hubbard";
-	char* removeword = "hubbard";
-	//wordRemove(chararray, removeword);
+	char chararray[]  = "mother hubbard";
+	char removeword[] = "hubbard";
+	wordRemove(chararray, removeword);
 
-	if(chararray == "mother ")
+	// use strcmp(check,input) != 0 
+	//source :: http://stackoverflow.com/questions/8004237/how-do-i-properly-compare-strings-in-c
+	if(strcmp(chararray, "mother ") != 0)
 	{
 		return 0;
 	}
-	if(chararray != "mother")
+	if(strcmp(chararray, "mother") != 0)
 	{
-		return 1;
+		return 0;
 	}
+
+	return -1;
 }
 
 
@@ -338,8 +359,9 @@ int generateReport(char* file)
 	add("-----------------------------------------------------------------\n");
 	for (i=0; i< numFunctions; i++)
 	{
+		//printf("%s\n", strings[0].value);
 		functionResponse = functions[i].function();
-		//printf("Index %d Function %s returned %d\n",i, functions[i].name, functionResponse);
+		printf("Index %d Function %s returned %d\n",i, functions[i].name, functionResponse);
 		add(functions[i].name);
 		//add(" function failed to run.\n");
 		
@@ -483,8 +505,11 @@ int loadArrays()
 
 		strings[i].length = currentArrayLength;
 
+
 		currentArrayLength *= 5;
 	}
+
+	return 0;
 }
 
 
