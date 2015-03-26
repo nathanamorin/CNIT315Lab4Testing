@@ -14,3 +14,8 @@
 * lab4_lib.h - contains function prototypes
 * lab4_testing.c - contains testing functions from testing group
 * lab4_testing.h - contains function prototypes for testing group along with testing assumptions
+
+
+### Notes
+
+* Scanning for input - http://stackoverflow.com/questions/1247989/how-do-you-allow-spaces-to-be-entered-using-scanf
