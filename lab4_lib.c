@@ -260,7 +260,7 @@ int concatenateStrings(char* str1, char* str2)
     int printStringWLen(char* array, int* length)
   {
 
-  if (array == "\0")
+  if (array[0] == '\0')
   {
     printf("Error -- array is null");
    return 1; 
