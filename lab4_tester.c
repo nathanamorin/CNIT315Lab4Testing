@@ -80,8 +80,9 @@ int testFindLength()
 	for (i=0; i<numArrays; i++)
 	{
 		strLength = strings[i].length;
-		char *string = malloc(strLength);
+		char *string = malloc(strLength*sizeof(char));
 		string = strings[i].value;
+		strLength = strlen(string);
 		//printf("%s\n", strings[0].value);
 		// int i =0;
 		// while (string[i] != '\0')
@@ -93,6 +94,7 @@ int testFindLength()
 
 		//Use Function to find length of string
 		returnValue = printStringWLen(string, &strLengthResponse);
+		//printf("Length - %d Returned Length %d\n", strLength,strLengthResponse);
 
 		if (returnValue != 0)
 		{
@@ -137,8 +139,8 @@ int testVowels()
 		}
 		//Use Function to find length of string
 		returnValue = vowelCheck(string, &strVowelResponse);
-		printf("Num Vowels Response -- %d\n", strVowelResponse);
-		printf("Num Vowels -- %d\n", numVowels);
+		//printf("Num Vowels Response -- %d\n", strVowelResponse);
+		//printf("Num Vowels -- %d\n", numVowels);
 		if (returnValue != 0)
 		{
 			return 1;
@@ -170,21 +172,23 @@ int testNumberWords()
 		strLength = strings[e].length;
 		char *string = malloc(strLength);
 		string = strings[e].value;
+		string[0] = 'A';
 		numWords = 1;
 		//Find number of Words
+		strWordResponse = 0;
 		for(i=1;string[i]!='\0';i++) 
 		{ 
-			if(((string[i]==' ' && string[i-1]!=' ') ||
-					(string[i]=='\t' && string[i-1]!='\t') ||
-					 (string[i]=='_' && string[i-1]!= '_')) && 
-				i <= strLength) 
+			if((string[i]==' ' && string[i-1]!=' ')) 
 			{
+				printf("char '%c' at index %d\n", string[i],i);
 				numWords++;
 			}
 		}
 
 		//Use Function to find length of string
 		returnValue = wordCount(string, &strWordResponse);
+
+		printf("\n\n%s\n NUMBER OF WORDS my %d theirs %d\n\n", string, numWords,strWordResponse);
 
 		if (returnValue != 0)
 		{
