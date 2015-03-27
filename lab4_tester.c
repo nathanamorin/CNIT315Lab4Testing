@@ -135,6 +135,7 @@ int testVowels()
 		}
 		//Use Function to find length of string
 		returnValue = vowelCheck(string, &strVowelResponse);
+		printf("======%d\n", strVowelResponse);
 		if (returnValue != 0)
 		{
 			return 1;
@@ -159,28 +160,24 @@ int testVowels()
 int testNumberWords()
 {
 	//Vars
-	int i,e,numWords = 1, strLength, strWordResponse = -5, returnValue;
+	int i,e,numWords, strLength, strWordResponse = -5, returnValue;
 	for (e=0; e<numArrays; e++)
 	{
 		loadArrays();
 		strLength = strings[e].length;
 		char *string = malloc(strLength);
 		string = strings[e].value;
-
+		numWords = 1;
 		//Find number of Words
-		for(i=1;string[i]!='\0';++i) 
+		for(i=1;string[i]!='\0';i++) 
 		{ 
-			if(((string[i]==' ' && string[i-1]!=' ') || 
+			if(((string[i]==' ' && string[i-1]!=' ') ||
 					(string[i]=='\t' && string[i-1]!='\t') ||
-					(string[i]=='_' && string[i-1]!= '_')) && 
-				i < strLength -1) 
+					 (string[i]=='_' && string[i-1]!= '_')) && 
+				i <= strLength) 
 			{
 				numWords++;
 			}
-		}
-		if (numWords > 0)
-		{
-			numWords++;
 		}
 
 		//Use Function to find length of string
@@ -289,7 +286,7 @@ int testConcat()
 
 		//Use Function to concatinate two strings
 		
-		//returnValue = findConcat(&string1, &string2, length1, length2);
+		//returnValue = concatenateStrings(string1, string2);
 
 		if (returnValue != 0)
 		{
