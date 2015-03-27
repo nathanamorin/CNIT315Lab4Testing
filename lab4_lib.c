@@ -158,7 +158,12 @@ int wordRemove(char* sentence_array, char* word)
 // Code written by Joseph Christopher
 int vowelCheck(char* array, int* vowels)
 {
-    
+    if (array == '\0')
+    {
+      printf("ERROR -- the array that was entered is null.");
+      return 1;
+    }
+    *vowels = 0;
     int i;
     
     for (i = 0; array[i] != '\0'; i++)
@@ -173,7 +178,7 @@ int vowelCheck(char* array, int* vowels)
      }
     
     printf("No. of vowels in %s = %d\n", array, *vowels);
-    
+    return 0;
 }
 
 
