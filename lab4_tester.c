@@ -117,13 +117,15 @@ int testFindLength()
 int testVowels()
 {
 	//Vars
-	int i,e,numVowels, strLength, strVowelResponse = -5, returnValue;
+	int i,e,numVowels, strLength, strVowelResponse , returnValue;
 	for (e=0; e<numArrays; e++)
 	{
 		loadArrays();
 		strLength = strings[e].length;
 		char *string = malloc(strLength);
 		string = strings[e].value;
+		numVowels = 0;
+		strVowelResponse = 0;
 		//Find number of vowels
 		//Source -- http://www.programiz.com/c-programming/examples/vowel-consonant-frequency-string
 		for(i=0; string[i]!='\0'; i++) 
@@ -135,12 +137,13 @@ int testVowels()
 		}
 		//Use Function to find length of string
 		returnValue = vowelCheck(string, &strVowelResponse);
-		printf("======%d\n", strVowelResponse);
+		printf("Num Vowels Response -- %d\n", strVowelResponse);
+		printf("Num Vowels -- %d\n", numVowels);
 		if (returnValue != 0)
 		{
 			return 1;
 		}
-		if (strVowelResponse == -5)
+		if (strVowelResponse == 0)
 		{
 			return -2;
 		}
@@ -252,10 +255,12 @@ int testSubString()
 	//vars
 	char string[] = "lucille";
 	subString(string, 2, 5);
+
+	printf("Testing Sub String -- %s\n", string);
 	
 	// use strcmp(check,input) != 0 
 	//source :: http://stackoverflow.com/questions/8004237/how-do-i-properly-compare-strings-in-c
-	if (strcmp(string, "cill") == 0)
+	if (strcmp(string, "cill") != 0)
 	{
 		return -1;
 	}
