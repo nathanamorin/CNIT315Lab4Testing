@@ -343,7 +343,8 @@ int generateReport(char* file)
 {
 	//Vars
 	FILE *outFile;
-	char *report = malloc(0*sizeof(char));
+	//Save to specified file
+	outFile = fopen(file,"a");
 	int functionResponse, i, numFunctions = 7, numErrors = 0;
 	struct TesterFunction functions[7] = {
 		{"Find Length Function",&testFindLength},
@@ -356,7 +357,7 @@ int generateReport(char* file)
 	};
 
 
-	#define add(line) addStrings(&report, line)
+	#define add(line) addStrings(outFile, line)
 
 
 
@@ -403,25 +404,12 @@ int generateReport(char* file)
 
 	printf("-----------------------------------------------------------------\n");
 	printf("REPORT HAS BEEN SAVED in file '%s' \n",file);
-	printf("See Below For Report \n\n");
-	printf("%s", report);
 
 
 	
 
 
-	//Save to specified file
-	outFile = fopen(file,"w");
-
-	if (outFile == 0)
-	{
-		printf("There was an error saving to the file\n");
-		return 1;
-	}
-
-	fputs(report,outFile);
-
-	fclose(outFile);
+	printf("Output fclose - %d", fclose(outFile));
 
 	return 0;
 }
@@ -476,22 +464,25 @@ int generate_random_string_array(char* array, int array_length){
 	return 0;
 }
 
-int addStrings(char **array_main, char *array_add)
+int addStrings(FILE *outFile, char *array_add)
 {
 	
-	int length_main = strlen(*array_main);
-	int length_add = strlen(array_add)+1;
-	//Expand Array
-	*array_main = realloc(*array_main,length_main+length_add);	
-	//Check if expansion was successful
+	// int length_main = strlen(*array_main);
+	// int length_add = strlen(array_add)+1;
+	// //Expand Array
+	// *array_main = realloc(*array_main,length_main+length_add);	
+	// //Check if expansion was successful
 
-	deep_copy_string(array_add, *array_main + length_main*sizeof(char), length_add);
-	//int i;
-	// for (i=length_main; i<length_main+length_add; i++)
-	// {
-	// 	*array_main[i] = array_add[i-length_main];
-	// }
-	// //free(array_buffer);
+	// deep_copy_string(array_add, *array_main + length_main*sizeof(char), length_add);
+	// //int i;
+	// // for (i=length_main; i<length_main+length_add; i++)
+	// // {
+	// // 	*array_main[i] = array_add[i-length_main];
+	// // }
+	// // //free(array_buffer);
+	printf("Output fputs - %d", fputs(array_add,outFile));
+
+
 
 	
 	return 0;
