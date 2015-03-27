@@ -213,6 +213,7 @@ int subString (char *array1, int index1, int index2)
 int concatenateStrings(char* str1, char* str2)
 {
 	int firstArrayLength = 0;
+	char* concatenatedWord;
 	int counter = 0;
 	
 	while (str1[firstArrayLength] != '\0')
@@ -220,17 +221,31 @@ int concatenateStrings(char* str1, char* str2)
 		firstArrayLength++;
 	}
 	
-	//firstArrayLength--;
-	
 	while (str2[counter] != '\0')
 	{
-		str1[firstArrayLength] = str2[counter];
+		//str1[firstArrayLength] = str2[counter];
+		//firstArrayLength++;
+		counter++;
+	}
+	firstArrayLength--;
+	
+	concatenatedWord = (char*)malloc(sizeof(char) * firstArrayLength+counter);
+	counter = 0;
+	firstArrayLength = 0;
+	while (str1[firstArrayLength] != '\0')
+	{
+		concatenatedWord[firstArrayLength] = str1[firstArrayLength];
+		firstArrayLength++;
+	}
+	while (str2[counter] != '\0')
+	{
+		concatenatedWord[firstArrayLength] = str2[counter];
 		firstArrayLength++;
 		counter++;
 	}
 	
-	str1[firstArrayLength] = '\0';
-	
+	concatenatedWord[firstArrayLength] = '\0';
+	printf("The concatenated string is: %s", concatenatedWord);
 	return 0;
 }
 
