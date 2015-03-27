@@ -285,7 +285,7 @@ int concatenateStrings(char* str1, char* str2)
 // Code written by Taylor Curtis
 int alphaNumeric(char ch)
 {
-	scanf("%c", &ch);
+	//scanf("%c", &ch);
 	
 	if (ch >= '0' && ch <= '9')
 	{
