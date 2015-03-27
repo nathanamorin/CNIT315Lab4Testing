@@ -127,7 +127,7 @@ int testVowels()
 		char *string = malloc(strLength);
 		string = strings[e].value;
 		numVowels = 0;
-		strVowelResponse = 0;
+		strVowelResponse = NULL;
 		//Find number of vowels
 		//Source -- http://www.programiz.com/c-programming/examples/vowel-consonant-frequency-string
 		for(i=0; string[i]!='\0'; i++) 
@@ -145,7 +145,7 @@ int testVowels()
 		{
 			return 1;
 		}
-		if (strVowelResponse == 0)
+		if (strVowelResponse == NULL)
 		{
 			return -2;
 		}
@@ -180,7 +180,6 @@ int testNumberWords()
 		{ 
 			if((string[i]==' ' && string[i-1]!=' ')) 
 			{
-				printf("char '%c' at index %d\n", string[i],i);
 				numWords++;
 			}
 		}
@@ -260,12 +259,13 @@ int testSubString()
 	char string[] = "lucille";
 	subString(string, 2, 5);
 
-	printf("Testing Sub String -- %s\n", string);
+	
 	
 	// use strcmp(check,input) != 0 
 	//source :: http://stackoverflow.com/questions/8004237/how-do-i-properly-compare-strings-in-c
 	if (strcmp(string, "cill") != 0)
 	{
+		printf("Testing Sub String -- %s\n", string);
 		return -1;
 	}
 	
@@ -291,11 +291,11 @@ int testConcat()
 		
     length1 = sizeof(string1) / sizeof(string1[0]);
     length2 = sizeof(string2) / sizeof(string2[0]);
-    totalLength = length1 + length2;				
-
+    totalLength = strlen(string1) + strlen(string2);				
+    printf("String 1 -- %s String 2 -- %s\n", string1,string2);
 		//Use Function to concatinate two strings
 		
-		//returnValue = concatenateStrings(string1, string2);
+		returnValue = concatenateStrings(string1, string2);
 
 		if (returnValue != 0)
 		{
@@ -305,8 +305,10 @@ int testConcat()
 		{
 			return -2;
 		}
-		else if (totalLength != (length1 + length2))
+		else if (totalLength != strlen(string1))
 		{
+			
+			printf("Total Length -- %d Calculated Length -- %d\n", totalLength, (int)strlen(string1));
 			return -1;
 		}
 
@@ -402,7 +404,7 @@ int generateReport(char* file)
 
 
 
-	printf("-----------------------------------------------------------------\n");
+	printf("\n\n\n\n\n\n\n\n\n-----------------------------------------------------------------\n");
 	printf("REPORT HAS BEEN SAVED in file '%s' \n",file);
 
 
@@ -480,7 +482,7 @@ int addStrings(FILE *outFile, char *array_add)
 	// // 	*array_main[i] = array_add[i-length_main];
 	// // }
 	// // //free(array_buffer);
-	printf("Output fputs - %d", fputs(array_add,outFile));
+	fputs(array_add,outFile);
 
 
 
