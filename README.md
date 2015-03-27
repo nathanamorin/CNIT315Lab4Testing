@@ -1,6 +1,6 @@
-# CNIT315 Lab4 Testing
+# CNIT315 Lab4 9:30 Lab
 
-### Project Created for Purdue University CNIT 315 by Team 1 9:30 Lab.
+### Project Created for Purdue University CNIT 315 9:30 Lab.
 
 ### Objectives
 * Test functions handling arrays and strings
