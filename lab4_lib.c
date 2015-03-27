@@ -203,7 +203,13 @@ int subString (char *array1, int index1, int index2)
 
         }
 				
-					array1 = input2;
+					//array1 = input2;
+					int a = 0;
+				while(a < 100)
+				{
+				  array1[a] = input2[a];
+				  a++;
+				}
          printf("\n");
 					return 0;
 		}
