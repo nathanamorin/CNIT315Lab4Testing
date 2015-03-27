@@ -297,6 +297,8 @@ int testConcat()
 		
 		returnValue = concatenateStrings(string1, string2);
 
+		printf("Result -- %s\n", string1);
+
 		if (returnValue != 0)
 		{
 			return 1;
