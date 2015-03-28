@@ -132,26 +132,26 @@ int wordRemove(char* sentence_array, char* word)
         if (sentence_array[a + b] == word[b])
         {
           count++;
+          if (sentence_array[a + b + 1] == ' ')
+          {
+            count++;
+          }
         }
         b++;
       }
     }
-    if (count == wordSize)
+    if (count == (wordSize + 1))
     {
-      break;
+      int c = a;
+      int d = a;
+      while (d <= (c+b))
+      {
+        sentence_array[d] = '\0';
+        d++;
+      }
     }
     a++;
   }
-  int c = a;
-  while (a <= (c+b))
-  {
-    sentence_array[a] = '\0';
-    a++;
-  }
-  return 0;
-  
-  
-}
 
 
 // This is the start of the function that checks the number of vowels in a sentence.
