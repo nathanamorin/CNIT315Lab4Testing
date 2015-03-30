@@ -280,40 +280,25 @@ int testSubString()
 int testConcat()
 {
 	//Vars
-	int e, strLength, returnValue;
-	int length1, length2, totalLength;
-	for (e=0; e<numArrays; e++)
+	char string1[500] = "A melancholy-looking man, he had the appearance of one ";
+	char string2[] = "who has searched for the leak in life's gas-pipe with a lighted candle - PG Wodehouse";
+
+	char stringTotal[] = "A melancholy-looking man, he had the appearance of one who has searched for the leak in life's gas-pipe with a lighted candle - PG Wodehouse";
+
+	int returnValue = concatenateStrings(string1,string2);
+
+	if (returnValue != 0)
 	{
-		strLength = strings[e].length;
-		char string1[strLength], string2[strLength];
-		deep_copy_string(strings[e].value, string1, strLength);
-		deep_copy_string(strings[e].value, string2, strLength);
-		
-    length1 = sizeof(string1) / sizeof(string1[0]);
-    length2 = sizeof(string2) / sizeof(string2[0]);
-    totalLength = strlen(string1) + strlen(string2);				
-    printf("String 1 -- %s String 2 -- %s\n", string1,string2);
-		//Use Function to concatinate two strings
-		
-		returnValue = concatenateStrings(string1, string2);
-
-		printf("Result -- %s\n", string1);
-
-		if (returnValue != 0)
-		{
-			return 1;
-		}
-		else if (string1[0] == ' ' || string2[0] == ' ')
+		return 1;
+	}
+	int i;
+	while (stringTotal[i] != '\0')
+	{
+		if (string1[i] != stringTotal[i])
 		{
 			return -2;
 		}
-		else if (totalLength != strlen(string1))
-		{
-			
-			printf("Total Length -- %d Calculated Length -- %d\n", totalLength, (int)strlen(string1));
-			return -1;
-		}
-
+		i++;
 	}
 
 	return 0;
