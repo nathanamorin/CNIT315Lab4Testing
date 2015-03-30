@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "lab4_lib.h"
+#include "lab4_alt_lib.h"
 
 int wordCount(char* sentence_array, int* numWords)
 {
