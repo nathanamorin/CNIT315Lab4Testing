@@ -127,7 +127,7 @@ int testVowels()
 		char *string = malloc(strLength);
 		string = strings[e].value;
 		numVowels = 0;
-		strVowelResponse = NULL;
+		strVowelResponse = -5;
 		//Find number of vowels
 		//Source -- http://www.programiz.com/c-programming/examples/vowel-consonant-frequency-string
 		for(i=0; string[i]!='\0'; i++) 
@@ -139,13 +139,13 @@ int testVowels()
 		}
 		//Use Function to find length of string
 		returnValue = vowelCheck(string, &strVowelResponse);
-		//printf("Num Vowels Response -- %d\n", strVowelResponse);
-		//printf("Num Vowels -- %d\n", numVowels);
+		printf("Num Vowels Response -- %d\n", strVowelResponse);
+		printf("Num Vowels -- %d\n", numVowels);
 		if (returnValue != 0)
 		{
 			return 1;
 		}
-		if (strVowelResponse == NULL)
+		if (strVowelResponse == -5)
 		{
 			return -2;
 		}

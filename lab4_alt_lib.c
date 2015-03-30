@@ -154,6 +154,7 @@ int vowelCheck(char* array, int* vowels)
 {
     
     int i;
+    *vowels = 0;
     
     for (i = 0; array[i] != '\0'; i++)
     {
