@@ -279,6 +279,7 @@ int testSubString()
 
 int testConcat()
 {
+	
 	//Vars
 	char string1[500] = "A melancholy-looking man, he had the appearance of one ";
 	char string2[] = "who has searched for the leak in life's gas-pipe with a lighted candle - PG Wodehouse";
@@ -291,9 +292,10 @@ int testConcat()
 	{
 		return 1;
 	}
-	int i;
+	int i=0;
 	while (stringTotal[i] != '\0')
 	{
+		
 		if (string1[i] != stringTotal[i])
 		{
 			return -2;
