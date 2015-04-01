@@ -101,50 +101,58 @@ int wordRemove(char* sentence_array, char* word)
     return 1;
   }
   
-  int sizeSentence = 0;
-  while (sentence_array[sizeSentence] != '\0')
+ int a = 0;
+ int maxSize;
+ while (sentence_array[a] != '\0')
   {
-    sizeSentence++;
+    a++;
+  }
+  maxSize = a;
+  
+  
+  a = 0;
+  int wordSize;
+  while (word[a] != '\0')
+  {
+    a++;
   }
   
-  
-  int sizeWord = 0;
-  while (word[sizeWord] != '\0')
+  wordSize = a;
+  a = 0;
+  int b = 0;
+  int count = 0;
+  while (a < maxSize)
   {
-    sizeWord++;
-  }
-  
-  int head=-1,scanner, stop = sizeSentence - sizeWord;
-  int found = 0;
-  while (head<=stop && found == 0)
-  {
-    head++;
-    scanner = 0;
-    if (sentence_array[head] == word[0])
+    b = 0;
+    count = 0;
+    if (sentence_array[a] == word[b])
     {
-      while (scanner < sizeWord)
+      while (b < wordSize)
       {
-        found = 1;
-        if (sentence_array[head+scanner] != word[scanner])
+        if (sentence_array[a + b] == word[b])
         {
-          found = 0;
-          break;
+          count++;
+          if (sentence_array[a + b + 1] == ' ')
+          {
+            count++;
+          }
         }
-        scanner++;
+        b++;
       }
     }
+    if (count == (wordSize + 1))
+    {
+      int c = a;
+      int d = a;
+      while (d <= (c+b))
+      {
+        sentence_array[d] = '\0';
+        d++;
+      }
+    }
+    a++;
   }
-  int i=head;
-  while (sentence_array[i+sizeWord] != '\0')
-  {
-   sentence_array[i] = sentence_array[i+sizeWord]; 
-   i++;
-  }
-  sentence_array[i] = '\0';
-  
   return 0;
-  
-  
 }
 
 
